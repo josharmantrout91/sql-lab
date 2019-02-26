@@ -42,7 +42,7 @@ UPDATE Customers
 SET PostalCode = 11122
 WHERE ContactName = 'Bilbo Baggins';
 
-**\*** STRETCH PROBLEMS **\*\***
+###### STRETCH PROBLEMS
 
 ## list orders grouped by customer showing the number of orders per customer. _Rattlesnake Canyon Grocery_ should have 7 orders.
 
@@ -68,3 +68,9 @@ INNER JOIN Customers ON Customers.CustomerID=Orders.CustomerID
 GROUP BY Customers.City
 
 ## delete all users that have no orders. Should delete 17 (or 18 if you haven't deleted the record added) records.
+
+DELETE FROM Customers
+WHERE CustomerID NOT IN(SELECT CustomerID FROM Orders)
+
+DELETE FROM Customers
+WHERE NOT EXISTS(SELECT CustomerID from Orders)
